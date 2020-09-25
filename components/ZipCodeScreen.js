@@ -26,13 +26,36 @@ export default function ZipCodeScreen() {
     const navigation = useNavigation()
     return (
         <View>
+            <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
             <FlatList
                 data={availableZipItems}
                 keyExtractor={_keyExtractor}
                 renderItem={({ item }) => <ZipItem {...item} navigation={navigation} />}
             />
             <StatusBar style="auto" />
+            </ImageBackground>
         </View>
     );
 
 }
+
+const styles = StyleSheet.create({
+    backdrop: {
+        alignItems: 'center',
+
+        width: '100%',
+        height: '100%'
+    },
+    cover: {
+        backgroundColor: 'black',
+        width: '100%',
+        height: 250,
+        opacity: 0.4,
+        alignItems: 'center',
+    },
+    medium: {
+        marginTop: 32,
+        fontSize: 15,
+        color: 'white',
+    }
+});
