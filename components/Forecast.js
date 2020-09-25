@@ -17,12 +17,14 @@ export default function Forecast(props) {
 const styles = StyleSheet.create({
     center: {        
         justifyContent: 'space-around',
+        padding: 150,
         alignItems: 'center',
     },
     big: {
         marginTop: 25,
         fontSize: 30,
         color: 'white',
+        alignItems: 'center'
     },
     medium: {
         marginTop: 20,

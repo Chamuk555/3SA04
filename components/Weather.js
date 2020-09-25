@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, ImageBackground, StyleSheet } from 'react-native';
 import Forecast from './Forecast';
+
+
 const apiKey = '1c70442aebefa498e673e1feaceb0c6f'
+
 export default function Weather(props) {
     const [forecastInfo, setForecastInfo] = useState({
         main: 'main',
-        description: 'desciption',
+        description: 'description',
         temp: 0
     })
+
     useEffect(() => {
         console.log(`fetching data with zipCode = ${props.zipCode}`)
         if (props.zipCode) {
             fetch(`http://api.openweathermap.org/data/2.5/weather?q=${props.zipCode},th&units=metric&APPID=${apiKey}`)
                 .then((response) => response.json())
+
                 .then((json) => {
                     console.log('json: ', json.weather)
                     // console.log(json.weather[0].main)
@@ -27,34 +32,36 @@ export default function Weather(props) {
                 });
         }
     }, [props.zipCode])
+
+
     return (
         <View>
-        <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
-            <View style={styles.cover}>
-                <Text style={styles.medium}>Zip Code is  {props.zipCode}.</Text>
-                <Forecast {...forecastInfo} />
-            </View>
-        </ImageBackground>
-    </View>
+            <ImageBackground source={require('../bg.jpg')} style={styles.backdrop}>
+                <View style={styles.cover}>
+                    <Text style={styles.medium}>Zip Code:  {props.zipCode}</Text>
+                    <Forecast {...forecastInfo} />
+                </View>
+            </ImageBackground>
+        </View>
     );
 }
 const styles = StyleSheet.create({
     backdrop: {
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
+        alignItems: 'center',
+
         width: '100%',
-        height: '100%',
-    },
-    medium: {
-        color: "white",
-        marginTop: 32,
-        fontSize: 15,
+        height: '100%'
     },
     cover: {
-        height: 250,
+        backgroundColor: 'black',
         width: '100%',
-        backgroundColor: "black",
+        height: 250,
         opacity: 0.4,
         alignItems: 'center',
+    },
+    medium: {
+        marginTop: 32,
+        fontSize: 15,
+        color: 'white',
     }
 });
