@@ -14,8 +14,7 @@ const availableZipItems = [
 const ZipItem = ({ place, code, navigation }) => (
     <TouchableHighlight onPress={() => navigation.navigate('Weather', { zipCode: code })}>
    
-        <View style={{ borderColor: 'lightgreen', borderWidth: 0 }}>
-
+        <View style={{ borderColor: 'lightgreen', borderWidth: 0 ,flexDirection: 'row',justifyContent: 'space-between'}}>
         <Text style={styles.medium}>{place}</Text>
         <Text style={styles.medium}>{code}</Text>  
         </View>
@@ -56,16 +55,16 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     medium: {
-        marginTop: 32,
+        marginTop: 27,
         fontSize: 17,
         color: 'white',
         paddingTop: 50,
-        paddingRight: 50,
+        paddingRight: 110,
         marginLeft: 1,
         marginRight: -40,
         opacity: 10,
         fontWeight: 'bold',
-        textAlign: 'center'
+
         
     },
 
